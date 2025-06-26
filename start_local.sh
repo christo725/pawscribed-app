@@ -30,6 +30,16 @@ echo -e "\nStarting backend server..."
     export JWT_SECRET_KEY="local-dev-secret-key"
     export ENVIRONMENT="development"
     
+    # Handle Google Cloud credentials if provided
+    if [ -f "./credentials/google-credentials.json" ]; then
+        export GOOGLE_APPLICATION_CREDENTIALS="./credentials/google-credentials.json"
+        echo "Using local Google Cloud credentials"
+    elif [ ! -z "$GOOGLE_APPLICATION_CREDENTIALS_JSON" ]; then
+        echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" | base64 -d > /tmp/google-credentials.json
+        export GOOGLE_APPLICATION_CREDENTIALS="/tmp/google-credentials.json"
+        echo "Using environment Google Cloud credentials"
+    fi
+    
     # Run migrations
     python migrate_database.py
     
