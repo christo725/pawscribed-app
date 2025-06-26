@@ -145,3 +145,4 @@ pawscribed-*.json
 *key.json
 *secret*.json
 credentials.json
+.vercel
