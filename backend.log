@@ -1,0 +1,10 @@
+INFO:     Will watch for changes in these directories: ['/Volumes/CVL_RAID2/PAWSCRIBED/app/Pawscribed_app/vetapp-backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [9308] using WatchFiles
+DEBUG:passlib.utils.compat:loaded lazy attr 'SafeConfigParser': <class 'configparser.ConfigParser'>
+DEBUG:passlib.utils.compat:loaded lazy attr 'NativeStringIO': <class '_io.StringIO'>
+DEBUG:passlib.utils.compat:loaded lazy attr 'BytesIO': <class '_io.BytesIO'>
+DEBUG:passlib.registry:registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+INFO:     Started server process [9313]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
