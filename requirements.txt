@@ -14,3 +14,6 @@ passlib[bcrypt]==1.7.4
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 email-validator==2.1.1
+reportlab==4.0.7
+aiofiles==23.2.1
+aiosmtplib==2.0.2
