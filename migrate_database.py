@@ -50,6 +50,36 @@ def migrate_database():
             print("Adding 'hashed_password' column to users table...")
             conn.execute(text("ALTER TABLE users ADD COLUMN hashed_password VARCHAR"))
             conn.commit()
+            
+        if 'full_name' not in user_columns:
+            print("Adding 'full_name' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN full_name VARCHAR"))
+            conn.commit()
+            
+        if 'veterinary_license' not in user_columns:
+            print("Adding 'veterinary_license' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN veterinary_license VARCHAR"))
+            conn.commit()
+            
+        if 'team_id' not in user_columns:
+            print("Adding 'team_id' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN team_id VARCHAR"))
+            conn.commit()
+            
+        if 'is_active' not in user_columns:
+            print("Adding 'is_active' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT true"))
+            conn.commit()
+            
+        if 'last_login' not in user_columns:
+            print("Adding 'last_login' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN last_login TIMESTAMP"))
+            conn.commit()
+            
+        if 'created_at' not in user_columns:
+            print("Adding 'created_at' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"))
+            conn.commit()
         
         if 'role' not in user_columns:
             print("Adding 'role' column to users table...")
@@ -58,7 +88,7 @@ def migrate_database():
         
         if 'trial_expires_at' not in user_columns:
             print("Adding 'trial_expires_at' column to users table...")
-            conn.execute(text("ALTER TABLE users ADD COLUMN trial_expires_at DATETIME"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN trial_expires_at TIMESTAMP"))
             conn.commit()
             
         if 'subscription_plan' not in user_columns:
@@ -68,7 +98,7 @@ def migrate_database():
             
         if 'updated_at' not in user_columns:
             print("Adding 'updated_at' column to users table...")
-            conn.execute(text("ALTER TABLE users ADD COLUMN updated_at DATETIME"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN updated_at TIMESTAMP"))
             conn.commit()
         
         # Check and add is_active to owners and pets
