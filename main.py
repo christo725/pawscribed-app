@@ -136,6 +136,39 @@ async def inspect_database(db: Session = Depends(get_db)):
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
+# Test registration endpoint
+@app.post("/admin/test-register")
+async def test_register(db: Session = Depends(get_db)):
+    """Test registration to see exact error"""
+    try:
+        from auth import get_password_hash
+        
+        # Test user data
+        hashed_password = get_password_hash("testpass123")
+        user_role = "trial"
+        
+        logger.info(f"Creating test user with role: {user_role}")
+        logger.info(f"Team ID type: {type(str(uuid.uuid4()))}")
+        
+        db_user = User(
+            email="test@example.com",
+            hashed_password=hashed_password,
+            full_name="Test User",
+            veterinary_license="VET123",
+            role=user_role,
+            team_id=str(uuid.uuid4())
+        )
+        
+        db.add(db_user)
+        db.commit()
+        db.refresh(db_user)
+        
+        return {"status": "success", "message": "Test user created", "user_id": db_user.id}
+        
+    except Exception as e:
+        logger.error(f"Test registration failed: {str(e)}")
+        return {"status": "error", "message": str(e), "error_type": type(e).__name__}
+
 # Test endpoint for debugging
 @app.get("/test-gemini")
 async def test_gemini():
