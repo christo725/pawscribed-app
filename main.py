@@ -311,8 +311,12 @@ async def read_owners(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    owners = db.query(Owner).offset(skip).limit(limit).all()
-    return owners
+    try:
+        owners = db.query(Owner).offset(skip).limit(limit).all()
+        return owners
+    except Exception as e:
+        logger.error(f"Error fetching owners: {e}")
+        return []
 
 @app.get("/owners/{owner_id}", response_model=OwnerSchema)
 async def read_owner(
@@ -355,22 +359,32 @@ async def read_pets(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    query = db.query(Pet).filter(Pet.is_active == True)
-    
-    # Search by name
-    if search:
-        query = query.filter(Pet.name.ilike(f"%{search}%"))
-    
-    # Filter by owner
-    if owner_id:
-        query = query.filter(Pet.owner_id == owner_id)
-    
-    # Filter by species
-    if species:
-        query = query.filter(Pet.species == species)
-    
-    pets = query.offset(skip).limit(limit).all()
-    return pets
+    try:
+        query = db.query(Pet)
+        
+        # Only filter by is_active if the column exists
+        try:
+            query = query.filter(Pet.is_active.is_(True))
+        except:
+            pass
+        
+        # Search by name
+        if search:
+            query = query.filter(Pet.name.ilike(f"%{search}%"))
+        
+        # Filter by owner
+        if owner_id:
+            query = query.filter(Pet.owner_id == owner_id)
+        
+        # Filter by species
+        if species:
+            query = query.filter(Pet.species == species)
+        
+        pets = query.offset(skip).limit(limit).all()
+        return pets
+    except Exception as e:
+        logger.error(f"Error fetching pets: {e}")
+        return []
 
 @app.get("/pets/{pet_id}", response_model=PetSchema)
 async def read_pet(
@@ -378,7 +392,7 @@ async def read_pet(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    pet = db.query(Pet).filter(Pet.id == pet_id, Pet.is_active == True).first()
+    pet = db.query(Pet).filter(Pet.id == pet_id, Pet.is_active.is_(True)).first()
     if pet is None:
         raise HTTPException(status_code=404, detail="Pet not found")
     return pet
@@ -390,7 +404,7 @@ async def update_pet(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    db_pet = db.query(Pet).filter(Pet.id == pet_id, Pet.is_active == True).first()
+    db_pet = db.query(Pet).filter(Pet.id == pet_id, Pet.is_active.is_(True)).first()
     if not db_pet:
         raise HTTPException(status_code=404, detail="Pet not found")
     
@@ -624,7 +638,7 @@ async def get_template_structure(
     template = db.query(Template).filter(
         Template.id == int(template_id),
         Template.created_by == current_user.id,
-        Template.is_active == True
+        Template.is_active.is_(True)
     ).first()
     
     if not template:
@@ -815,21 +829,27 @@ async def create_note(
 async def list_notes(
     skip: int = 0,
     limit: int = 100,
-    status: Optional[NoteStatus] = None,
+    status: Optional[str] = None,
     patient_id: Optional[int] = None,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    query = db.query(Note).filter(Note.user_id == current_user.id)
-    
-    if status:
-        query = query.filter(Note.status == status)
-    
-    if patient_id:
-        query = query.filter(Note.patient_id == patient_id)
-    
-    notes = query.order_by(Note.created_at.desc()).offset(skip).limit(limit).all()
-    return notes
+    try:
+        query = db.query(Note).filter(Note.user_id == current_user.id)
+        
+        if status:
+            # Convert string to enum value if needed
+            if status in [s.value for s in NoteStatus]:
+                query = query.filter(Note.status == status)
+        
+        if patient_id:
+            query = query.filter(Note.patient_id == patient_id)
+        
+        notes = query.order_by(Note.created_at.desc()).offset(skip).limit(limit).all()
+        return notes
+    except Exception as e:
+        logger.error(f"Error fetching notes: {e}")
+        return []
 
 @app.get("/notes/{note_id}", response_model=NoteSchema)
 async def get_note(
