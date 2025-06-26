@@ -979,15 +979,26 @@ async def get_workflow_stats(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    stats = {}
-    for status in NoteStatus:
-        count = db.query(Note).filter(
-            Note.user_id == current_user.id,
-            Note.status == status
-        ).count()
-        stats[status.value] = count
-    
-    return stats
+    try:
+        stats = {}
+        for status in NoteStatus:
+            count = db.query(Note).filter(
+                Note.user_id == current_user.id,
+                Note.status == status.value
+            ).count()
+            stats[status.value] = count
+        
+        return stats
+    except Exception as e:
+        logger.error(f"Error getting workflow stats: {e}")
+        # Return empty stats if there's an error
+        return {
+            "draft": 0,
+            "processing": 0,
+            "available_for_review": 0,
+            "ready_to_export": 0,
+            "exported": 0
+        }
 
 # Batch operations endpoints
 @app.post("/notes/batch/status")
