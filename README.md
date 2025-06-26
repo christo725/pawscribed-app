@@ -1,2 +1,2 @@
-# VetChart Frontend (Next.js + Tailwind)
-Simple veterinary chart UI.
+# Pawscribed - Veterinary Documentation Assistant
+Advanced veterinary documentation with AI assistance.
