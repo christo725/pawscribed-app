@@ -94,23 +94,22 @@ async def run_migration(db: Session = Depends(get_db)):
     """Temporary endpoint to run database migration"""
     try:
         from sqlalchemy import text
-        # Try to add 'trial' to user_role enum if it's an enum
+        
+        # First, copy data from password_hash to hashed_password if needed
         try:
-            db.execute(text("ALTER TYPE user_role ADD VALUE IF NOT EXISTS 'trial'"))
+            db.execute(text("UPDATE users SET hashed_password = password_hash WHERE hashed_password IS NULL"))
             db.commit()
-            return {"status": "success", "message": "Added 'trial' to enum"}
-        except Exception as enum_error:
-            # If it's not an enum, try to change the column type to VARCHAR
-            try:
-                db.execute(text("ALTER TABLE users ALTER COLUMN role TYPE VARCHAR"))
-                db.commit()
-                return {"status": "success", "message": "Changed role column to VARCHAR"}
-            except Exception as varchar_error:
-                return {
-                    "status": "error", 
-                    "enum_error": str(enum_error),
-                    "varchar_error": str(varchar_error)
-                }
+        except Exception as e:
+            print(f"Data copy failed: {e}")
+        
+        # Drop the old password_hash column
+        try:
+            db.execute(text("ALTER TABLE users DROP COLUMN password_hash"))
+            db.commit()
+            return {"status": "success", "message": "Cleaned up password columns"}
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+            
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
