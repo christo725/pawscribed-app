@@ -146,3 +146,4 @@ pawscribed-*.json
 *secret*.json
 credentials.json
 .vercel
+__pycache__/
