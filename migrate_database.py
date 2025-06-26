@@ -43,6 +43,32 @@ def migrate_database():
     
     # Add new columns to existing tables if needed
     with engine.connect() as conn:
+        # First, check and fix the user_role enum
+        try:
+            print("Checking user_role enum values...")
+            result = conn.execute(text("""
+                SELECT enumlabel 
+                FROM pg_enum 
+                WHERE enumtypid = (
+                    SELECT oid FROM pg_type WHERE typname = 'user_role'
+                )
+                ORDER BY enumsortorder;
+            """))
+            
+            enum_values = [row[0] for row in result]
+            print(f"Current enum values: {enum_values}")
+            
+            if 'trial' not in enum_values:
+                print("Adding 'trial' to user_role enum...")
+                conn.execute(text("ALTER TYPE user_role ADD VALUE 'trial'"))
+                conn.commit()
+                print("Successfully added 'trial' to enum")
+            else:
+                print("'trial' already exists in enum")
+                
+        except Exception as e:
+            print(f"Error with enum (might not exist yet): {e}")
+        
         # Check and add new columns to users table
         user_columns = [col['name'] for col in inspector.get_columns('users')]
         
