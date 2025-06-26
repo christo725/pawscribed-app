@@ -91,7 +91,7 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
       setRecordingState('requesting-permission');
       
       // Request microphone access
-      const stream = await navigator.mediaRecorder.getUserMedia({
+      const stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
