@@ -46,7 +46,7 @@ class User(Base):
     hashed_password = Column(String)
     full_name = Column(String)
     veterinary_license = Column(String)
-    role = Column(Enum(UserRole), default=UserRole.TRIAL)
+    role = Column(String, default="trial")
     team_id = Column(String, nullable=True, index=True)  # UUID for team identification
     is_active = Column(Boolean, default=True)
     trial_expires_at = Column(DateTime, default=lambda: datetime.utcnow() + timedelta(days=14))
