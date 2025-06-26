@@ -43,8 +43,12 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache when offline
 self.addEventListener('fetch', (event) => {
-  // Skip cache for API requests
-  if (event.request.url.includes('/api/')) {
+  const requestUrl = new URL(event.request.url);
+  
+  // Skip cache for API requests and external requests
+  if (event.request.url.includes('/api/') || 
+      requestUrl.hostname !== self.location.hostname ||
+      requestUrl.hostname === 'pawscribed-app.onrender.com') {
     return;
   }
 

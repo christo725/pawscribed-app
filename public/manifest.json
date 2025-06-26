@@ -47,25 +47,5 @@
       ]
     }
   ],
-  "categories": ["medical", "productivity", "business"],
-  "screenshots": [
-    {
-      "src": "/screenshots/mobile-dashboard.png",
-      "sizes": "360x800",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/screenshots/mobile-recording.png",
-      "sizes": "360x800",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/screenshots/desktop-dashboard.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    }
-  ]
+  "categories": ["medical", "productivity", "business"]
 }
