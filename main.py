@@ -114,6 +114,29 @@ async def run_migration(db: Session = Depends(get_db)):
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
+# Database inspection endpoint
+@app.get("/admin/inspect")
+async def inspect_database(db: Session = Depends(get_db)):
+    """Inspect current database structure"""
+    try:
+        from sqlalchemy import text, inspect
+        inspector = inspect(db.bind)
+        
+        # Get users table columns
+        users_columns = []
+        try:
+            columns = inspector.get_columns('users')
+            users_columns = [{"name": col['name'], "type": str(col['type'])} for col in columns]
+        except Exception as e:
+            users_columns = f"Error getting columns: {e}"
+        
+        return {
+            "status": "success",
+            "users_table_columns": users_columns
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
 # Test endpoint for debugging
 @app.get("/test-gemini")
 async def test_gemini():
