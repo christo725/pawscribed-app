@@ -128,12 +128,15 @@ async def register(user: UserCreate, db: Session = Depends(get_db)):
     
     # Create new user
     hashed_password = get_password_hash(user.password)
+    # Debug logging to verify enum value
+    logger.debug(f"Creating user with role: {UserRole.TRIAL.value} (type: {type(UserRole.TRIAL.value)})")
+    
     db_user = User(
         email=user.email,
         hashed_password=hashed_password,
         full_name=user.full_name,
         veterinary_license=user.veterinary_license,
-        role=UserRole.TRIAL.value,  # Use .value to ensure lowercase
+        role="trial",  # Explicitly use lowercase string to ensure compatibility
         team_id=str(uuid.uuid4())  # Generate unique team ID
     )
     db.add(db_user)
