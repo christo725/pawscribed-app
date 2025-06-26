@@ -43,13 +43,13 @@ api.interceptors.response.use(
           Cookies.set('auth_token', access_token, {
             expires: 1/48, // 30 minutes
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
           });
           
           Cookies.set('refresh_token', newRefreshToken, {
             expires: 7, // 7 days
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict'
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
           });
           
           // Retry original request
@@ -81,13 +81,13 @@ export const authAPI = {
     Cookies.set('auth_token', access_token, { 
       expires: 1/48, // 30 minutes
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     
     Cookies.set('refresh_token', refresh_token, { 
       expires: 7, // 7 days
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     
     return { user, access_token, refresh_token };
@@ -106,13 +106,13 @@ export const authAPI = {
     Cookies.set('auth_token', access_token, { 
       expires: 1/48, // 30 minutes
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     
     Cookies.set('refresh_token', refresh_token, { 
       expires: 7, // 7 days
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     
     return { user, access_token, refresh_token };
