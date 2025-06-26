@@ -88,6 +88,32 @@ async def shutdown_event():
 async def health_check():
     return {"status": "healthy", "service": "Pawscribed API"}
 
+# Temporary migration endpoint
+@app.post("/admin/migrate")
+async def run_migration(db: Session = Depends(get_db)):
+    """Temporary endpoint to run database migration"""
+    try:
+        from sqlalchemy import text
+        # Try to add 'trial' to user_role enum if it's an enum
+        try:
+            db.execute(text("ALTER TYPE user_role ADD VALUE IF NOT EXISTS 'trial'"))
+            db.commit()
+            return {"status": "success", "message": "Added 'trial' to enum"}
+        except Exception as enum_error:
+            # If it's not an enum, try to change the column type to VARCHAR
+            try:
+                db.execute(text("ALTER TABLE users ALTER COLUMN role TYPE VARCHAR"))
+                db.commit()
+                return {"status": "success", "message": "Changed role column to VARCHAR"}
+            except Exception as varchar_error:
+                return {
+                    "status": "error", 
+                    "enum_error": str(enum_error),
+                    "varchar_error": str(varchar_error)
+                }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
 # Test endpoint for debugging
 @app.get("/test-gemini")
 async def test_gemini():
