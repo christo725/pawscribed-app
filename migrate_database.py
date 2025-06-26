@@ -46,6 +46,11 @@ def migrate_database():
         # Check and add new columns to users table
         user_columns = [col['name'] for col in inspector.get_columns('users')]
         
+        if 'hashed_password' not in user_columns:
+            print("Adding 'hashed_password' column to users table...")
+            conn.execute(text("ALTER TABLE users ADD COLUMN hashed_password VARCHAR"))
+            conn.commit()
+        
         if 'role' not in user_columns:
             print("Adding 'role' column to users table...")
             conn.execute(text("ALTER TABLE users ADD COLUMN role VARCHAR DEFAULT 'trial'"))
