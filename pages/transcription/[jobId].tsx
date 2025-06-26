@@ -46,7 +46,8 @@ export default function TranscriptionStatusPage() {
       console.error('Failed to fetch transcription status:', error);
       toast.error('Failed to load transcription status');
       setPolling(false);
-    } finally {\n      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,7 +130,7 @@ export default function TranscriptionStatusPage() {
         return (
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
             <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinecap="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
         );

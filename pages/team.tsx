@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../contexts/AuthContext';
 import { teamAPI } from '../lib/api';
 import { TeamMembers } from '../components/team/TeamMembers';
-import { TeamActivity } from '../components/team/TeamActivity';
-import { AddMemberModal } from '../components/team/AddMemberModal';
+// import { TeamActivity } from '../components/team/TeamActivity';
+// import { AddMemberModal } from '../components/team/AddMemberModal';
 import toast from 'react-hot-toast';
 
 interface TeamMember {
@@ -290,7 +290,9 @@ export default function TeamPage() {
             )}
             
             {activeTab === 'activity' && (
-              <TeamActivity activity={activity} />
+              <div className="text-center py-12 text-gray-500">
+                <p>Team Activity component coming soon...</p>
+              </div>
             )}
             
             {activeTab === 'settings' && (
@@ -308,12 +310,21 @@ export default function TeamPage() {
         </div>
       </div>
 
-      {/* Add Member Modal */}
-      <AddMemberModal
-        isOpen={showAddMemberModal}
-        onClose={() => setShowAddMemberModal(false)}
-        onSubmit={handleAddMember}
-      />
+      {/* Add Member Modal - Coming Soon */}
+      {showAddMemberModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg font-semibold mb-4">Add Team Member</h3>
+            <p className="text-gray-600 mb-4">Team member management coming soon...</p>
+            <button
+              onClick={() => setShowAddMemberModal(false)}
+              className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -857,8 +857,6 @@ export default function InboxPage() {
   );
 }
 
-export { getServerSideProps } from 'next-i18next/serverSideTranslations';
-
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...(await import('next-i18next/serverSideTranslations').then(m => 
