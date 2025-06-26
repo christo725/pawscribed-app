@@ -1,0 +1,113 @@
+{
+  "patient": {
+    "title": "Patient",
+    "patients": "Patients",
+    "name": "Nom du Patient",
+    "species": "Espèce",
+    "breed": "Race",
+    "age": "Âge",
+    "weight": "Poids",
+    "sex": "Sexe",
+    "color": "Couleur",
+    "microchip": "Puce électronique",
+    "medicalRecord": "Numéro de Dossier Médical",
+    "owner": "Propriétaire",
+    "lastVisit": "Dernière Visite",
+    "addPatient": "Ajouter un Patient",
+    "editPatient": "Modifier le Patient",
+    "patientInfo": "Informations Patient",
+    "medicalHistory": "Historique Médical",
+    "vaccinations": "Vaccinations",
+    "allergies": "Allergies",
+    "medications": "Médicaments"
+  },
+  "notes": {
+    "title": "Note",
+    "notes": "Notes",
+    "createNote": "Créer une Note",
+    "editNote": "Modifier la Note",
+    "noteType": "Type de Note",
+    "status": "Statut",
+    "createdAt": "Créé",
+    "updatedAt": "Mis à jour",
+    "exportedAt": "Exporté",
+    "soapNote": "Note SOAP",
+    "subjective": "Subjectif",
+    "objective": "Objectif",
+    "assessment": "Évaluation",
+    "plan": "Plan",
+    "template": "Modèle",
+    "transcription": "Transcription",
+    "confidence": "Confiance"
+  },
+  "workflow": {
+    "stages": {
+      "draft": "Brouillon",
+      "processing": "En traitement",
+      "availableForReview": "Disponible pour révision",
+      "readyToExport": "Prêt à exporter",
+      "exported": "Exporté"
+    },
+    "actions": {
+      "moveToReview": "Déplacer vers révision",
+      "moveToExport": "Déplacer vers export",
+      "markAsExported": "Marquer comme exporté",
+      "returnToDraft": "Retourner au brouillon"
+    }
+  },
+  "recording": {
+    "title": "Enregistrement Audio",
+    "startRecording": "Démarrer l'Enregistrement",
+    "stopRecording": "Arrêter l'Enregistrement",
+    "playback": "Lecture",
+    "upload": "Téléverser Audio",
+    "transcribing": "Transcription en cours...",
+    "transcriptionComplete": "Transcription Terminée",
+    "generateSoap": "Générer Note SOAP"
+  },
+  "export": {
+    "title": "Exporter",
+    "exportToPdf": "Exporter en PDF",
+    "emailNote": "Envoyer Note par E-mail",
+    "recipient": "Destinataire",
+    "subject": "Sujet",
+    "message": "Message",
+    "attachment": "Pièce jointe",
+    "sendEmail": "Envoyer E-mail",
+    "downloadPdf": "Télécharger PDF"
+  },
+  "team": {
+    "title": "Équipe",
+    "members": "Membres de l'Équipe",
+    "addMember": "Ajouter un Membre",
+    "editMember": "Modifier le Membre",
+    "removeMember": "Retirer le Membre",
+    "role": "Rôle",
+    "permissions": "Permissions",
+    "lastLogin": "Dernière Connexion",
+    "roles": {
+      "practiceOwner": "Propriétaire de Clinique",
+      "admin": "Administrateur",
+      "veterinarian": "Vétérinaire",
+      "technician": "Technicien",
+      "trial": "Utilisateur d'Essai"
+    },
+    "activity": "Activité de l'Équipe",
+    "recentActivity": "Activité Récente"
+  },
+  "analytics": {
+    "title": "Analyses",
+    "overview": "Aperçu",
+    "productivity": "Productivité",
+    "trends": "Tendances",
+    "completionTimes": "Temps d'Achèvement",
+    "exportActivity": "Activité d'Exportation",
+    "patientInsights": "Aperçus Patients",
+    "qualityMetrics": "Métriques de Qualité",
+    "performance": "Performance",
+    "averageTime": "Temps Moyen",
+    "totalNotes": "Total des Notes",
+    "completionRate": "Taux d'Achèvement",
+    "dailyAverage": "Moyenne Quotidienne"
+  }
+}

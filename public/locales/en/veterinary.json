@@ -1,0 +1,113 @@
+{
+  "patient": {
+    "title": "Patient",
+    "patients": "Patients",
+    "name": "Patient Name",
+    "species": "Species",
+    "breed": "Breed",
+    "age": "Age",
+    "weight": "Weight",
+    "sex": "Sex",
+    "color": "Color",
+    "microchip": "Microchip",
+    "medicalRecord": "Medical Record Number",
+    "owner": "Owner",
+    "lastVisit": "Last Visit",
+    "addPatient": "Add Patient",
+    "editPatient": "Edit Patient",
+    "patientInfo": "Patient Information",
+    "medicalHistory": "Medical History",
+    "vaccinations": "Vaccinations",
+    "allergies": "Allergies",
+    "medications": "Medications"
+  },
+  "notes": {
+    "title": "Note",
+    "notes": "Notes",
+    "createNote": "Create Note",
+    "editNote": "Edit Note",
+    "noteType": "Note Type",
+    "status": "Status",
+    "createdAt": "Created",
+    "updatedAt": "Updated",
+    "exportedAt": "Exported",
+    "soapNote": "SOAP Note",
+    "subjective": "Subjective",
+    "objective": "Objective",
+    "assessment": "Assessment",
+    "plan": "Plan",
+    "template": "Template",
+    "transcription": "Transcription",
+    "confidence": "Confidence"
+  },
+  "workflow": {
+    "stages": {
+      "draft": "Draft",
+      "processing": "Processing",
+      "availableForReview": "Available for Review",
+      "readyToExport": "Ready to Export",
+      "exported": "Exported"
+    },
+    "actions": {
+      "moveToReview": "Move to Review",
+      "moveToExport": "Move to Export",
+      "markAsExported": "Mark as Exported",
+      "returnToDraft": "Return to Draft"
+    }
+  },
+  "recording": {
+    "title": "Audio Recording",
+    "startRecording": "Start Recording",
+    "stopRecording": "Stop Recording",
+    "playback": "Playback",
+    "upload": "Upload Audio",
+    "transcribing": "Transcribing...",
+    "transcriptionComplete": "Transcription Complete",
+    "generateSoap": "Generate SOAP Note"
+  },
+  "export": {
+    "title": "Export",
+    "exportToPdf": "Export to PDF",
+    "emailNote": "Email Note",
+    "recipient": "Recipient",
+    "subject": "Subject",
+    "message": "Message",
+    "attachment": "Attachment",
+    "sendEmail": "Send Email",
+    "downloadPdf": "Download PDF"
+  },
+  "team": {
+    "title": "Team",
+    "members": "Team Members",
+    "addMember": "Add Team Member",
+    "editMember": "Edit Member",
+    "removeMember": "Remove Member",
+    "role": "Role",
+    "permissions": "Permissions",
+    "lastLogin": "Last Login",
+    "roles": {
+      "practiceOwner": "Practice Owner",
+      "admin": "Administrator",
+      "veterinarian": "Veterinarian",
+      "technician": "Technician",
+      "trial": "Trial User"
+    },
+    "activity": "Team Activity",
+    "recentActivity": "Recent Activity"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "overview": "Overview",
+    "productivity": "Productivity",
+    "trends": "Trends",
+    "completionTimes": "Completion Times",
+    "exportActivity": "Export Activity",
+    "patientInsights": "Patient Insights",
+    "qualityMetrics": "Quality Metrics",
+    "performance": "Performance",
+    "averageTime": "Average Time",
+    "totalNotes": "Total Notes",
+    "completionRate": "Completion Rate",
+    "dailyAverage": "Daily Average"
+  }
+}

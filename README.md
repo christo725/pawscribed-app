@@ -1,2 +1,2 @@
-# VetChart Backend
-FastAPI app for Gemini chart generation.
+# VetChart Frontend (Next.js + Tailwind)
+Simple veterinary chart UI.

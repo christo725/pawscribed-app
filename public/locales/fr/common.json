@@ -1,0 +1,76 @@
+{
+  "navigation": {
+    "dashboard": "Tableau de Bord",
+    "patients": "Patients",
+    "inbox": "Boîte de Réception",
+    "workflow": "Flux de Travail",
+    "analytics": "Analyses",
+    "team": "Équipe",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
+  },
+  "buttons": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "add": "Ajouter",
+    "remove": "Retirer",
+    "export": "Exporter",
+    "import": "Importer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "clear": "Effacer",
+    "refresh": "Actualiser",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "close": "Fermer",
+    "view": "Voir",
+    "download": "Télécharger",
+    "upload": "Téléverser"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Avertissement",
+    "info": "Information",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "confirm": "Confirmer",
+    "optional": "Optionnel",
+    "required": "Requis",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "date": "Date",
+    "time": "Heure",
+    "status": "Statut",
+    "type": "Type",
+    "notes": "Notes",
+    "description": "Description",
+    "total": "Total",
+    "active": "Actif",
+    "inactive": "Inactif"
+  },
+  "forms": {
+    "validation": {
+      "required": "Ce champ est requis",
+      "email": "Veuillez saisir une adresse e-mail valide",
+      "minLength": "Doit contenir au moins {{count}} caractères",
+      "maxLength": "Ne doit pas dépasser {{count}} caractères",
+      "pattern": "Format invalide"
+    }
+  },
+  "errors": {
+    "generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "network": "Erreur réseau. Veuillez vérifier votre connexion.",
+    "unauthorized": "Vous n'êtes pas autorisé à effectuer cette action.",
+    "notFound": "La ressource demandée n'a pas été trouvée.",
+    "serverError": "Erreur serveur. Veuillez réessayer plus tard."
+  }
+}

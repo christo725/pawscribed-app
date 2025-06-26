@@ -1,0 +1,76 @@
+{
+  "navigation": {
+    "dashboard": "Panel de Control",
+    "patients": "Pacientes",
+    "inbox": "Bandeja de Entrada",
+    "workflow": "Flujo de Trabajo",
+    "analytics": "Análisis",
+    "team": "Equipo",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión"
+  },
+  "buttons": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "add": "Agregar",
+    "remove": "Quitar",
+    "export": "Exportar",
+    "import": "Importar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "clear": "Limpiar",
+    "refresh": "Actualizar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "view": "Ver",
+    "download": "Descargar",
+    "upload": "Subir"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "confirm": "Confirmar",
+    "optional": "Opcional",
+    "required": "Requerido",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "date": "Fecha",
+    "time": "Hora",
+    "status": "Estado",
+    "type": "Tipo",
+    "notes": "Notas",
+    "description": "Descripción",
+    "total": "Total",
+    "active": "Activo",
+    "inactive": "Inactivo"
+  },
+  "forms": {
+    "validation": {
+      "required": "Este campo es requerido",
+      "email": "Por favor ingrese un correo electrónico válido",
+      "minLength": "Debe tener al menos {{count}} caracteres",
+      "maxLength": "No debe tener más de {{count}} caracteres",
+      "pattern": "Formato inválido"
+    }
+  },
+  "errors": {
+    "generic": "Algo salió mal. Por favor intente de nuevo.",
+    "network": "Error de red. Por favor verifique su conexión.",
+    "unauthorized": "No está autorizado para realizar esta acción.",
+    "notFound": "El recurso solicitado no fue encontrado.",
+    "serverError": "Error del servidor. Por favor intente más tarde."
+  }
+}
