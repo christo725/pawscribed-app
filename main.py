@@ -133,7 +133,7 @@ async def register(user: UserCreate, db: Session = Depends(get_db)):
         hashed_password=hashed_password,
         full_name=user.full_name,
         veterinary_license=user.veterinary_license,
-        role=UserRole.TRIAL,
+        role=UserRole.TRIAL.value,  # Use .value to ensure lowercase
         team_id=str(uuid.uuid4())  # Generate unique team ID
     )
     db.add(db_user)
