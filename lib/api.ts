@@ -15,7 +15,6 @@ const api = axios.create({
 // Add auth token to requests
 api.interceptors.request.use((config) => {
   const token = Cookies.get('auth_token');
-  console.log('Auth token found:', token ? 'Yes' : 'No');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -79,7 +78,6 @@ export const authAPI = {
     const { access_token, refresh_token, user } = response.data;
     
     // Store tokens in secure cookies
-    console.log('Storing auth tokens:', { access_token: access_token.slice(0, 10) + '...', refresh_token: refresh_token.slice(0, 10) + '...' });
     Cookies.set('auth_token', access_token, { 
       expires: 1/48, // 30 minutes
       secure: process.env.NODE_ENV === 'production',
@@ -90,10 +88,6 @@ export const authAPI = {
       expires: 7, // 7 days
       secure: process.env.NODE_ENV === 'production',
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
-    });
-    console.log('Cookies set, verifying:', { 
-      auth_token: Cookies.get('auth_token') ? 'Present' : 'Missing',
-      refresh_token: Cookies.get('refresh_token') ? 'Present' : 'Missing'
     });
     
     return { user, access_token, refresh_token };
@@ -109,7 +103,6 @@ export const authAPI = {
     const { access_token, refresh_token, user } = response.data;
     
     // Store tokens in secure cookies
-    console.log('Storing auth tokens:', { access_token: access_token.slice(0, 10) + '...', refresh_token: refresh_token.slice(0, 10) + '...' });
     Cookies.set('auth_token', access_token, { 
       expires: 1/48, // 30 minutes
       secure: process.env.NODE_ENV === 'production',
@@ -120,10 +113,6 @@ export const authAPI = {
       expires: 7, // 7 days
       secure: process.env.NODE_ENV === 'production',
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
-    });
-    console.log('Cookies set, verifying:', { 
-      auth_token: Cookies.get('auth_token') ? 'Present' : 'Missing',
-      refresh_token: Cookies.get('refresh_token') ? 'Present' : 'Missing'
     });
     
     return { user, access_token, refresh_token };
