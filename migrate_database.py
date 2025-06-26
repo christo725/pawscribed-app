@@ -105,13 +105,13 @@ def migrate_database():
         owner_columns = [col['name'] for col in inspector.get_columns('owners')]
         if 'is_active' not in owner_columns:
             print("Adding 'is_active' column to owners table...")
-            conn.execute(text("ALTER TABLE owners ADD COLUMN is_active BOOLEAN DEFAULT 1"))
+            conn.execute(text("ALTER TABLE owners ADD COLUMN is_active BOOLEAN DEFAULT true"))
             conn.commit()
             
         pet_columns = [col['name'] for col in inspector.get_columns('pets')]
         if 'is_active' not in pet_columns:
             print("Adding 'is_active' column to pets table...")
-            conn.execute(text("ALTER TABLE pets ADD COLUMN is_active BOOLEAN DEFAULT 1"))
+            conn.execute(text("ALTER TABLE pets ADD COLUMN is_active BOOLEAN DEFAULT true"))
             conn.commit()
     
     print("Database migration completed successfully!")
