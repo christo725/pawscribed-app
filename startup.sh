@@ -10,10 +10,6 @@ else
     echo "No Google Cloud credentials provided, transcription service will have limited functionality."
 fi
 
-# Run database migrations
-echo "Running database migrations..."
-python migrate_database.py
-
 # Start the application
 echo "Starting Pawscribed backend..."
 exec uvicorn main:app --host 0.0.0.0 --port $PORT
